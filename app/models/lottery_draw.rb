@@ -1,6 +1,5 @@
 class LotteryDraw < ApplicationRecord
   class << self
-
     def generate_for
       ActiveRecord::Base.transaction do
         lottery_draw = create!(numbers: draw_six_numbers)
@@ -8,6 +7,8 @@ class LotteryDraw < ApplicationRecord
         lottery_draw
       end
     end
+
+    private
 
     def draw_six_numbers
       (1..49).to_a.shuffle.take(6)

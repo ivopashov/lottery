@@ -1,0 +1,23 @@
+h1 Winners
+
+p Lottery winning numbers: #{@lottery_draw.numbers.join(',')}
+
+- if @winners.any?
+  table.table.table-striped.table-hover
+    thead
+      tr
+        th Name
+        th Amount
+        th Numbers
+    tbody
+      - @winners.each do |lottery_ticket|
+        tr
+          td = lottery_ticket.name
+          td = lottery_ticket.amount
+          td = lottery_ticket.numbers.join(',')
+- else
+  p Sorry, no winners in this lottery draw
+
+= link_to 'Create ticket', new_lottery_ticket_path, class: 'btn btn-medium btn-primary'
+
+

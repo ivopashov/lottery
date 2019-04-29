@@ -1,0 +1,16 @@
+h1 Tickets for next lottery run
+
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Numbers
+  tbody
+    - @lottery_tickets.each do |lottery_ticket|
+      tr
+        td = lottery_ticket.name
+        td = lottery_ticket.numbers.join(',')
+
+div.btn-group
+  = link_to 'New Ticket', new_lottery_ticket_path, class: 'btn btn-success'
+  = link_to 'Lottery draw', lottery_draws_path, method: :post, class: 'btn btn-primary'

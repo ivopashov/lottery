@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'lottery_tickets#index'
+
+  resources :lottery_tickets, only: %i(new create index)
+  resources :lottery_draws, only: %i(create show)
 end

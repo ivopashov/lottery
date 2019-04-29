@@ -1,0 +1,16 @@
+h1 Create ticket
+div.lottery-ticket-js data={numbers: @lottery_ticket.numbers}
+  = form_for @lottery_ticket do |form|
+    fieldset
+      div.form-group
+        = form.label :name, class: 'form-label'
+        = form.text_field :name, required: true, class: 'form-control'
+    fieldset
+      legend Please choose 6 numbers
+      div.lottery-numbers
+      div = form.hidden_field :numbers, required: true, class: 'lottery-numbers-input'
+    div.form-group
+      = form.submit class: 'btn btn-primary', disabled: true
+
+javascript:
+  new window.LotteryView({ el: $('.lottery-ticket-js') })
