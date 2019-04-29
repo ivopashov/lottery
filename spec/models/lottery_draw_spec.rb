@@ -1,17 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe LotteryDraw do
-  it 'draws six numbers' do
-    expect(LotteryDraw.draw_six_numbers.size).to eq 6
+  it 'generates a lottery draw' do
+    expect{LotteryDraw.generate_for}.to change{LotteryDraw.count}.by(1)
   end
 
-  it 'draws numbers within a range' do
-    numbers = LotteryDraw.draw_six_numbers
+  it 'assigns tickets that have not played yet to a lottery draw' do
+    create :lottery_ticket, lottery_draw: nil, numbers: [1, 2, 3, 4, 5, 6], name: 'not played yet'
 
-    numbers.each { |number| expect(number).to be_between(1, 49) }
-  end
+    LotteryDraw.generate_for
 
-  it 'draws six unique numbers' do
-    expect(LotteryDraw.draw_six_numbers.uniq.size).to eq 6
+    expect(LotteryTicket.first.lottery_draw).not_to be_nil
   end
 end

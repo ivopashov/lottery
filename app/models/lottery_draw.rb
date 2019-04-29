@@ -1,14 +1,12 @@
 class LotteryDraw < ApplicationRecord
   class << self
-    def draw
-      LotteryDrawNumber.transaction do
-        lottery_draw = create! lottery_draw_numbers: draw_six_numbers
-        LotteryTicket.where(lottery_draw: nil) do |eligible_ticket|
-          eligible_ticket.update! lottery_draw: lottery_draw
-        end
-      end
 
-      lottery_draw
+    def generate_for
+      ActiveRecord::Base.transaction do
+        lottery_draw = create!(numbers: draw_six_numbers)
+        LotteryTicket.where(lottery_draw: nil).update lottery_draw_id: lottery_draw.id
+        lottery_draw
+      end
     end
 
     def draw_six_numbers
