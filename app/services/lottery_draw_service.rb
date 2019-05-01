@@ -44,12 +44,15 @@ class LotteryDrawService
   end
 
   def distribute_prize
+    distribute_prize_for_non_jackpot_tickets
+    distribute_prize_for_jackpot_tickets
+  end
+
+  def distribute_prize_for_non_jackpot_tickets
     @non_jackpot_distributions.each do |common_numbers, share|
       tickets = @winning_tickets.select { |ticket| ticket.common_numbers == common_numbers }
       tickets.each { |ticket| ticket.amount = (PRIZE * share) / tickets.size  }
     end
-
-    distribute_prize_for_jackpot_tickets
   end
 
   def distribute_prize_for_jackpot_tickets
@@ -62,8 +65,8 @@ class LotteryDrawService
       select { |ticket| ticket.common_numbers != JACKPOT_COMMON_NUMBERS }.
       size
 
-    share = non_jackpot_tickets_count.zero? ? 1 : 0.5
+    prize_share = non_jackpot_tickets_count.zero? ? 1 : 0.5
 
-    PRIZE * share
+    PRIZE * prize_share
   end
 end

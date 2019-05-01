@@ -7,6 +7,6 @@ class LotteryDrawsController < ApplicationController
 
   def show
     @lottery_draw = LotteryDraw.find params[:id]
-    @winners = LotteryDrawService.execute(@lottery_draw)
+    @winners = LotteryDrawService.execute @lottery_draw
   end
 end
