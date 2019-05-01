@@ -8,4 +8,7 @@ html
     = csp_meta_tag
   body
     .container
+      - if flash[:notice]
+        javascript:
+          toastr.success("#{flash[:notice]}")
       = yield

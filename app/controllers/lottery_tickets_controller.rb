@@ -8,7 +8,9 @@ class LotteryTicketsController < ApplicationController
   end
 
   def create
-    LotteryTicket.create lottery_ticket_params
+    LotteryTicket.create! lottery_ticket_params
+
+    flash[:notice] = 'Ticket created successfully'
 
     redirect_to lottery_tickets_path
   end

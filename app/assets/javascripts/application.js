@@ -19,5 +19,6 @@
 //= require handlebars
 //= require popper
 //= require bootstrap
+//= require toastr
 //= require modules/Lottery
 //= require_tree .
