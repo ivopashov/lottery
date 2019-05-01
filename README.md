@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependencies
 
-Things you may want to cover:
+* Ruby version 2.6.3
+* PostgreSQL server
 
-* Ruby version
+## Application run
 
-* System dependencies
+* `git clone`
+* `cd lottery && bundle install`
+* `bin/rake db:setup`
+* `bower install`
+* `bin/rails s`
+* navigate to localhost:3000 in a browser
+* enjoy
 
-* Configuration
+## Tests rub
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run them by `bin/rails spec`
