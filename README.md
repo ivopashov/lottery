@@ -15,6 +15,6 @@
 * navigate to localhost:3000 in a browser
 * enjoy
 
-## Tests rub
+## Tests run
 
 Run them by `bin/rails spec`
