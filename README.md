@@ -9,6 +9,7 @@
 
 * `git clone`
 * `cd lottery && bundle install`
+* tweak database.yml to change the user and db name if needed
 * `bin/rake db:setup`
 * `bower install`
 * `bin/rails s`
